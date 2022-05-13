@@ -1,0 +1,24 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-3">
+        <input id="inputEmail" type="email" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email address" required=""
+            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4">
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <input id="inputPassword" type="password" formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" required=""
+            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm">Login</button>
+
+</form>
+<div class="hr"></div>
+<div class="foot"> <a href="#">Forgot Password?</a> </div>
