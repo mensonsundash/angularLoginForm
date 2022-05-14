@@ -17,6 +17,23 @@ export class SignupComponent implements OnInit {
    get f() {
      return this.signupForm.controls;
    }
+
+   confirmMatch(firstPassword:string, matchingPassword:string){
+    return(formGroup:FormGroup)=> {
+      const fPassword = formGroup.controls[firstPassword];
+      const mPassword = formGroup.controls[matchingPassword];
+
+      if(mPassword.errors && !mPassword.errors['confirmMatch']) {
+        return
+      }
+      if(fPassword.value !== mPassword.value) {
+        mPassword.setErrors({confirmMatch:true});
+      }
+      else{
+        mPassword.setErrors(null);
+      }
+    }
+   }
    onSubmit(){
      this.submitted = true;
      //if form invalid stop here
@@ -34,9 +51,13 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['',[Validators.required, Validators.email]],
-      password: ['',[Validators.required]],
+      password: ['',[Validators.required, Validators.minLength(6)]],
       confirm_password: ['',[Validators.required]]
-    });
+    },
+    {
+      validators: this.confirmMatch('password', 'confirm_password')
+    }
+    );
   }
 
 }
