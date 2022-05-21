@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 @Injectable({
   providedIn: 'root'
 })
+
 export class CrudService {
 
   //Node/Express API
@@ -38,7 +39,7 @@ export class CrudService {
     }),
     catchError(this.handleError)
     )
-  }  
+  } 
 
   //Update
   updateInvoice(id:any, data:any): Observable<any> {

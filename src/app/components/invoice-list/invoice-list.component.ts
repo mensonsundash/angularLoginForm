@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from './../../service/crud.service';
 
 @Component({
   selector: 'app-invoice-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvoiceListComponent implements OnInit {
 
-  constructor() { }
+  Invoices:any = [];
+
+  constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
+    this.crudService.GetInvoices().subscribe(res => {
+      console.log(res)
+      this.Invoices = res;
+    });
   }
 
+  delete(id:any, i:any){
+    console.log(id);
+    if(window.confirm('Do you want to go ahead?')) {
+      this.crudService.deleteInvoice(id).subscribe((res) => {
+        this.Invoices.splice(i, 1);
+      })
+    }
+  }
 }
