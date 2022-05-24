@@ -20,5 +20,14 @@ var crypto =  require("crypto");
          collection: 'users'
      }
  )
- 
- module.exports = mongoose.model('Users', userSchema)
+// setting the password method called setPassword and combine salt and hash encryption
+ userSchema.methods.setPassword = function(password){
+    this.salt = crypto.randomBytes(16).toString('hex');
+    this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+ };
+ // validating password with already salt value and decrypt them to match with encrypted value 
+ userSchema.methods.validPasword = function(password) {
+    var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
+    return this.hash === hash;
+ };
+ module.exports = mongoose.model('User', userSchema)
