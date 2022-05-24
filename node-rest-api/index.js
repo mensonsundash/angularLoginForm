@@ -9,8 +9,10 @@ mongoose = require('mongoose'),
 cors= require('cors'),
 bodyParser = require('body-parser'),
 createError = require('http-errors'),
-
 mongoDb = require('./database/db');
+
+var passport = require('passport');
+require('./config/passport');
 /**
  * Instanitate MongoDB database locally and if error it shows to user
  */
@@ -51,6 +53,9 @@ app.get('/', (req, res) => {
 //Static directory path
 app.use(express.static(path.join(__dirname, 'dist/angular-login-form')));
 // app.use('/', express.static(path.join(__dirname, 'dist/angular-login-form')));
+
+//Passport should be initialized as Express middleware just before the API routes are added
+app.use(passport.initialize());
 // API root
 app.use('/api', invoiceRoute)
 
