@@ -7,9 +7,9 @@ import { AddInvoiceComponent } from './components/add-invoice/add-invoice.compon
 import { InvoiceDetailComponent } from './components/invoice-detail/invoice-detail.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  // { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent},
-  { path: '', pathMatch: 'full', redirectTo: 'add-invoice' },
+  { path: '', pathMatch: 'full', redirectTo: 'invoice-list' },
   { path: 'invoice-list', component: InvoiceListComponent },
   { path: 'add-invoice', component: AddInvoiceComponent },
   { path: 'edit-invoice/:id', component: InvoiceDetailComponent }

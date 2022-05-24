@@ -1,41 +1,46 @@
 <div class="app">
   <div class="row no-gutters">
-      <div class="col-md-6 mx-auto p-0">
-          <div class="card">
+      <div class="col-md-12 mx-auto p-0">
             <!-- this HTML section should be inside the login user page-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand">Invoice Operations Demo</a>
-               
-                <div id="navbarNav" class="collapse navbar-collapse">
-                  <ul class="navbar-nav ml-auto ">
-                    <li class="nav-item">
-                      <a class="nav-link" routerLinkActive="active" routerLink="/invoice-list">Show Invoice</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLinkActive="active" routerLink="/add-invoice">Add Invoice</a>
-                    </li>
-                  </ul>
-                </div>
-            </nav>
-            <!--Shows each link page above inside it-->
-            <router-outlet></router-outlet>
-              
+              <a class="navbar-brand">Invoice Operations</a>
+            
+              <div id="navbarNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto ">
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/invoice-list">Show Invoice</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/add-invoice">Add Invoice</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" routerLink="/login">Login</a>
+                  </li>
+                </ul>
+              </div>
+          </nav>
+          <!--Shows each link page above inside it-->
+          <router-outlet></router-outlet>
+      </div>
+      <!-- <div class="col-md-6 mx-auto p-0">
+          <div class="card">
             <div class="login-box">
-                <div class="login-snip"> <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-snip"> 
+                  <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label> 
+                  <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
                     <div class="login-space">
                         <div class="login">
-                        <!-- login form from app-login -->
                         <app-login></app-login>
                             
                         </div>
                         <div class="sign-up-form">
-                        <!-- signup form from app-signup -->
                             <app-signup></app-signup>
                         </div>
                     </div>
                 </div>
             </div>
+
           </div>
-      </div>
+      </div> -->
   </div>
 </div>

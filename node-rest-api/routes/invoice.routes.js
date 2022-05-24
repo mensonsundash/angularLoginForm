@@ -7,7 +7,7 @@ const express = require('express');
 const app = express();
 
 const invoiceRoute = express.Router();
-let Invoice = require('../models/Invoicee');
+let Invoice = require('../models/Invoice');
 
 //Add Invoice
 invoiceRoute.route('/add-invoice').post((req,res,next) => {

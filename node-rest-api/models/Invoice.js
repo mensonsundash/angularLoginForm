@@ -1,6 +1,6 @@
 /**
  * Defining Database Schema
- * below example only store username and address (both string)
+ * below example only store name, reference and description (all string)
  */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
