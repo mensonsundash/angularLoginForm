@@ -9,7 +9,7 @@ var crypto =  require("crypto");
 var jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
- 
+
 let userSchema = new Schema(
     {
         email: {type: String, unique: true, required: true},
@@ -26,7 +26,7 @@ userSchema.methods.setPassword = function(password){
 this.salt = crypto.randomBytes(16).toString('hex');
 this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
 };
-// validating password with already salt value and decrypt them to match with encrypted value 
+// validating password with already salt value and decrypt them to match with encrypted value
 userSchema.methods.validPasword = function(password) {
 var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
 return this.hash === hash;
